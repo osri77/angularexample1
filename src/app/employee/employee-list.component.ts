@@ -29,6 +29,23 @@ export class EmployeeListComponent implements OnInit {
     },
 ];
 
+// This property keeps track of which radio button is selected
+    // We have set the default value to All, so all the employees
+    // are displayed in the table by default
+    selectedEmployeeCountRadioButton: string = 'All';
+
+    // Depending on which radio button is selected, this method updates
+    // selectedEmployeeCountRadioButton property declared above
+    // This method is called when the child component (EmployeeCountComponent)
+    // raises the custom event - countRadioButtonSelectionChanged
+    // The event binding is specified in employeeList.component.html
+    onEmployeeCountRadioButtonChange(selectedRadioButtonValue: string): void {
+      console.log("onEmployeeCountRadioButtonChange Selected")
+
+      this.selectedEmployeeCountRadioButton = selectedRadioButtonValue;
+  }
+
+
   getTotalEmployeesCount(): number {
     return this.employees.length;
   }
