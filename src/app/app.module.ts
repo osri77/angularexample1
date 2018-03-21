@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeListComponent } from './employee/employee-list.component';
 import { EmployeeCountComponent } from './employee/employee-count.component';
+import { EmployeePipePipe } from './employee/employee-pipe.pipe';
 
 
 
@@ -15,7 +16,8 @@ import { EmployeeCountComponent } from './employee/employee-count.component';
     AppComponent,
     EmployeeComponent,
     EmployeeListComponent,
-    EmployeeCountComponent
+    EmployeeCountComponent,
+    EmployeePipePipe
     
   ],
   imports: [
