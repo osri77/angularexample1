@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeCountComponent implements OnInit {
 
+  all: number = 10;
+  male: number = 5;
+  female: number = 5;
+
   constructor() { }
 
   ngOnInit() {
