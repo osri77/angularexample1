@@ -3,11 +3,19 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeListComponent } from './employee/employee-list.component';
+import { EmployeeCountComponent } from './employee/employee-count.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EmployeeComponent,
+    EmployeeListComponent,
+    EmployeeCountComponent
+    
   ],
   imports: [
     BrowserModule
