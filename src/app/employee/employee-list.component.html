@@ -1,6 +1,13 @@
 <app-employee-count *ngIf="employees" [all]=" getTotalEmployeesCount()" [male]=" getMaleEmployeesCount()" [female]=" getFemaleEmployeesCount()"(countRadioButtonSelectionChanged)="onEmployeeCountRadioButtonChange($event)"></app-employee-count>
+
 <table>
     <thead>
+        <tr *ngIf="!employees">
+                <td colspan="5">
+                    {{statusMessage}}
+                </td>
+        </tr>
+                
         <tr>
             <th>Code</th>
             <th>Name</th>
@@ -9,6 +16,7 @@
             <th>Date of Birth</th>
         </tr>
     </thead>
+
     <tbody>
         <ng-container *ngFor="let employee of employees;">
             <tr *ngIf="selectedEmployeeCountRadioButton=='All' ||

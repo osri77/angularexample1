@@ -47,7 +47,7 @@ export class EmployeeListComponent implements OnInit {
 
       this.selectedEmployeeCountRadioButton = selectedRadioButtonValue;
   }
-
+  statusMessage: string = 'Loading data. Please wait...';
 
   getTotalEmployeesCount(): number {
     return this.employees.length;
@@ -63,7 +63,9 @@ export class EmployeeListComponent implements OnInit {
 
   ngOnInit() {
   //  this.employees = this._empService.getEmployees();
-  this._empService.getEmployees().subscribe(data=>this.employees = data)
+  this._empService.getEmployees().subscribe(data=>this.employees = data,
+    error=>{console.error(error);
+    this.statusMessage = 'Problem with the service. Please try again after sometime'});
   }
 
 }
