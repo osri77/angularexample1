@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const appRoutes: Routes = [
 {path:'employees',component:EmployeeListComponent},
+{path:'employees/:code',component:EmployeeComponent},
 {path:'home',component:HomeComponent},
 {path:'',redirectTo:'/home',pathMatch:'full'},
 {path:'**',component:PageNotFoundComponent}
