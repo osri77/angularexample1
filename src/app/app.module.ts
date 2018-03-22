@@ -9,7 +9,7 @@ import { EmployeeListComponent } from './employee/employee-list.component';
 import { EmployeeCountComponent } from './employee/employee-count.component';
 import { EmployeePipePipe } from './employee/employee-pipe.pipe';
 import { EmployeeService } from './employee/employee-service.service';
-
+import {HttpModule} from '@angular/http';
 
 
 
@@ -24,7 +24,8 @@ import { EmployeeService } from './employee/employee-service.service';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

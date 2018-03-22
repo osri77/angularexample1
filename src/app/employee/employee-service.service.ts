@@ -1,11 +1,20 @@
 import { Injectable } from '@angular/core';
-import {Iemployee} from './iemployee'
+import {Iemployee} from './iemployee';
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class EmployeeService {
   
-  constructor() { }
-  getEmployees(): Iemployee[]
+  constructor(private _http:Http) { }
+  getEmployees():Observable<Iemployee[]>{
+
+    return this._http.get('http://localhost:62577/api/employees')
+                    .map((response: Response)=><Iemployee[]>response.json());
+
+  }
+  /*getEmployees(): Iemployee[]
   {
     return [
               {
@@ -33,6 +42,7 @@ export class EmployeeService {
                 annualSalary: 7700.481, dateOfBirth: '11/18/1979'
             },
     ];
-  }
+  }*/
+
 
 }
