@@ -10,23 +10,34 @@ import { EmployeeCountComponent } from './employee/employee-count.component';
 import { EmployeePipePipe } from './employee/employee-pipe.pipe';
 import { EmployeeService } from './employee/employee-service.service';
 import {HttpModule} from '@angular/http';
+import { HomeComponent } from './home/home.component';
+import {RouterModule, Routes} from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+const appRoutes: Routes = [
+{path:'employees',component:EmployeeListComponent},
+{path:'home',component:HomeComponent},
+{path:'',redirectTo:'/home',pathMatch:'full'},
+{path:'**',component:PageNotFoundComponent}
 
 
-
+]
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
     EmployeeListComponent,
     EmployeeCountComponent,
-    EmployeePipePipe
+    EmployeePipePipe,
+    HomeComponent,
+    PageNotFoundComponent
     
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
-  ],
+    HttpModule,
+    RouterModule.forRoot(appRoutes)  ],
   providers: [],
   bootstrap: [AppComponent]
 })
