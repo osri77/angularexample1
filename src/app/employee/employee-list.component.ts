@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Iemployee } from './iemployee';
+import {EmployeeService} from './employee-service.service'
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.css']
+  styleUrls: ['./employee-list.component.css'],
+  providers:[EmployeeService]
 })
 export class EmployeeListComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private _empService:EmployeeService) { }
+  employees: Iemployee[];
+/*
   employees: Iemployee[] = [
     {
         code: 'emp101', name: 'Tom', gender: 'Male',
@@ -28,7 +31,7 @@ export class EmployeeListComponent implements OnInit {
         annualSalary: 6500.826, dateOfBirth: '10/14/1980'
     },
 ];
-
+*/
 // This property keeps track of which radio button is selected
     // We have set the default value to All, so all the employees
     // are displayed in the table by default
@@ -59,6 +62,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.employees = this._empService.getEmployees();
   }
 
 }

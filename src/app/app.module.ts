@@ -8,6 +8,8 @@ import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeListComponent } from './employee/employee-list.component';
 import { EmployeeCountComponent } from './employee/employee-count.component';
 import { EmployeePipePipe } from './employee/employee-pipe.pipe';
+import { EmployeeService } from './employee/employee-service.service';
+
 
 
 
