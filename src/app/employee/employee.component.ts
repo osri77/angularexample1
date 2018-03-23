@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Iemployee} from './iemployee';
 import {EmployeeService} from './employee-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class EmployeeComponent implements OnInit {
   showDetails: boolean = false;
   */
 
-  constructor(private _employeeService:EmployeeService, private _activatedRoute:ActivatedRoute) { }
+  constructor(private _employeeService:EmployeeService, private _activatedRoute:ActivatedRoute, private _router:Router) { }
   employee: Iemployee;
   statusMessage: string = 'Loading data. Please wait...';
   ngOnInit() {
@@ -52,4 +52,10 @@ toggleDetails(): void {
     this.showDetails = !this.showDetails;
 }
 */
+
+onBackButtonClick():void{
+  this._router.navigate(["/employees"]);
+}
+
+
 }
