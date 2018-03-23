@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Iemployee} from './iemployee';
 import {EmployeeService} from './employee-service.service';
 import { ActivatedRoute,Router } from '@angular/router';
-
+import 'rxjs/add/operator/retry';
+import 'rxjs/add/operator/retryWhen';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/scan';
 
 @Component({
   selector: 'app-employee',
@@ -26,6 +29,19 @@ export class EmployeeComponent implements OnInit {
     let empCode: string = this._activatedRoute.snapshot.params['code'];
 
     this._employeeService.getEmployeeByCode(empCode)
+    .retryWhen((err) => {
+      return err.scan((retryCount, val) => {
+          retryCount += 1;
+          if (retryCount < 6) {
+              this.statusMessage = 'Retrying...Attempt #' + retryCount;
+              return retryCount;
+          }
+          else {
+              throw (err);
+          }
+      }, 0).delay(1000)
+  })
+
             .subscribe((employeeData) => {
                 if (employeeData == null) {
                     this.statusMessage =
